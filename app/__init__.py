@@ -30,4 +30,4 @@ def not_found(error):
 """ index """
 @application.route('/')
 def index():
-    return render_template('index.html')
+    return redirect('/domain')
