@@ -26,14 +26,12 @@
                 <tr>
                     <th>No</th>
                     <th>Keyword</th>
-                    <th>Result Count</th>
                     <th>Action</th>
                 </tr>
                 {% for search in search_list %}
                 <tr>
                     <td>{{loop.index}}</td>
                     <td>{{search.keyword}}</td>
-                    <td>{{search.domain|length}}</td>
                     <td>
                         <a href="/domain/delete_search/{{search.id}}" class="btn btn-danger btn-xs"
                             onclick="return confirm('Are You Sure For Delete?')">Delete</a>
