@@ -1,6 +1,6 @@
 from flask import Blueprint, request, redirect, render_template, flash, url_for
 from app.db import db
-from .models import Domain
+from .models import Domain, Search, results
 
 
 """ create domain_app for blueprint """
@@ -73,6 +73,43 @@ def update():
     return redirect('/')
 
 
+def save_search(keyword, domains):
+    search = Search(keyword)
+    for domain in domains:
+        search.domain.append(domain)
+    db.session.add(search)
+    db.session.commit()
+
+
 @domain_app.route('/search')
 def search():
     """ search domain data by keywords """
+    keyword = request.args.get('keyword')
+
+    if (keyword is None):
+        flash('No search keywords. Pleaase input keywords!')
+        return redirect('/')
+    else:
+        page = request.args.get('page', 1, type=int)
+        per_page = request.args.get('per_page', 10, type=int)
+        query = Domain.query
+        results = query.filter(
+            Domain.domain.like(f'%{keyword}%') |
+            Domain.etld.like(f'%{keyword}%') |
+            Domain.first_seen.like(f'%{keyword}%') |
+            Domain.last_seen.like(f'%{keyword}%') |
+            Domain.time_date_imported.like(f'%{keyword}%')
+        ).limit(per_page).offset((page - 1) * per_page)
+
+        next_url = url_for('domain_app.search', page=page + 1, keyword=keyword) \
+            if results.count() >= per_page else None
+        prev_url = url_for('domain_app.search', page=page - 1, keyword=keyword) \
+            if page > 1 else None
+
+        if results.count() < 0:
+            flash('No data to show by the keyword.')
+            return redirect('/')
+        else:
+            save_search(keyword, results)
+            return render_template('index.html', domain_data=results,
+                                   next_url=next_url, prev_url=prev_url, keyword=keyword)
