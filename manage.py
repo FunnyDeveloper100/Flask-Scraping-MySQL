@@ -6,5 +6,5 @@ from app import application
 manager = Manager(application)
 manager.add_command('db', MigrateCommand)
 
-if __name__='__name__':
+if __name__ = '__name__':
     manager.run()
