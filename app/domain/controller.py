@@ -113,3 +113,8 @@ def search():
             save_search(keyword, results)
             return render_template('index.html', domain_data=results,
                                    next_url=next_url, prev_url=prev_url, keyword=keyword)
+
+@domain_app.route('/search_list')
+def search_list():
+    search_list = Search.query.all()
+    return render_template('search_list.html', search_list=search_list)
