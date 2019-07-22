@@ -42,7 +42,19 @@ def insert():
 @domain_app.route('/delete/<string:id>')
 def delete(id):
     """ delete one domain by id """
-
+    try:
+        domain = Domain.query.filter_by(id=id).first()
+        if domain is not None:
+            Domain.query.filter_by(id=id).delete()
+            db.session.commit()
+            flash(f'Deleted domain by id {id} successfully')
+        else:
+            flash(f'Failed deleting domain by id {id}')
+        
+        return redirect('/')
+    except:
+        flash(f'Raised an error while deleting domain by {id}')
+        return redirect('/')
 
 @domain_app.route('/update', methods=['POST'])
 def update():
