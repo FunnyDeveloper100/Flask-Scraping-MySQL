@@ -114,12 +114,32 @@ def search():
             return render_template('index.html', domain_data=results,
                                    next_url=next_url, prev_url=prev_url, keyword=keyword)
 
+
 @domain_app.route('/search_list')
 def search_list():
+    """ view search list """
     search_list = Search.query.all()
     return render_template('search_list.html', search_list=search_list)
 
-@domain_app.route('search/<string:id>')
+
+@domain_app.route('/search/<string:id>')
 def view_search(id):
+    """ view search results with domain details """
     search = Search.query.filter_by(id=id).first()
     return render_template('index.html', domain_data=search.domain)
+
+@domain_app.route('/delete_search/<string:id>')
+def delete_search(id):
+    try:
+        search = Search.query.filter_by(id=id).first()
+        if search is not None:
+            search.domain.clear()
+            Search.query.filter_by(id=id).delete()
+            db.session.commit()
+            flash(f'Deleted search by id {id} successfully!')
+        else:
+            flash(f'Failed deleting search id {id}')
+        return redirect('/domain/search_list')
+    except:
+        flash(f'Raised an error while deleting domain by {id}')
+        return redirect('/domain/search_list')
