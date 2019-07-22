@@ -118,3 +118,8 @@ def search():
 def search_list():
     search_list = Search.query.all()
     return render_template('search_list.html', search_list=search_list)
+
+@domain_app.route('search/<string:id>')
+def view_search(id):
+    search = Search.query.filter_by(id=id).first()
+    return render_template('index.html', domain_data=search.domain)
