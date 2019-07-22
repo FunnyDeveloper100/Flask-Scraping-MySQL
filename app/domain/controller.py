@@ -26,6 +26,17 @@ def domains():
 @domain_app.route('/insert', methods=['POST'])
 def insert():
     """ insert new domain to database """
+    if request.method == 'POST':
+        domain = request.form['domain']
+        first_seen = int(request.form['first_seen'])
+        last_seen = int(request.form['last_seen'])
+        etld = request.form['etld']
+
+        domain = Domain(domain, first_seen, last_seen, etld)
+        db.session.add(domain)
+        db.session.commit()
+        flash('Inserted new domain data successfully')
+    return redirect('/')
 
 
 @domain_app.route('/delete/<string:id>')
