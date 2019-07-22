@@ -50,15 +50,27 @@ def delete(id):
             flash(f'Deleted domain by id {id} successfully')
         else:
             flash(f'Failed deleting domain by id {id}')
-        
+
         return redirect('/')
     except:
         flash(f'Raised an error while deleting domain by {id}')
         return redirect('/')
 
+
 @domain_app.route('/update', methods=['POST'])
 def update():
     """ update existing domain """
+    if request.method == 'POST':
+        id = request.form['id']
+        item = Domain.query.filter_by(id=id).first()
+        item.domain = request.form['domain']
+        item.first_seen = int(request.form['first_seen'])
+        item.last_seen = int(request.form['last_seen'])
+        item.etld = request.form['etld']
+
+        db.session.commit()
+        flash('Updated successfully!')
+    return redirect('/')
 
 
 @domain_app.route('/search')
