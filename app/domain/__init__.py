@@ -1,1 +1,1 @@
-from . import controller as domain_app
+from . import controller as domain

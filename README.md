@@ -38,3 +38,25 @@ I would like you to do the following:
 11. Thats it.
 
 No login or security is required for this test, just single user as above.
+
+
+# set up project
+1. set up python 3.x virtualenv
+  ```python3 -m venv venv```
+3. activate virtualenv
+  ```source venv/bin/activate```
+4. install packages in requirements.txt
+  ```pip insatll -r requirements.txt```
+5. migrate database
+  ```python manage.py db init```
+  ```python manage.py db migrate```
+  ```python manage.py db upgrade```
+  
+  then, domains, search, results tables are migrated to mysql database
+
+6. upload the csv to MySQL
+  ```python domains-csv.py --f domains.csv.gz```
+
+7. run flask application
+  ```python run.py```
+

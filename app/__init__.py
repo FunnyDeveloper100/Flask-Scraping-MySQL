@@ -2,7 +2,7 @@ from app.db import db
 from flask import Flask, render_template, redirect
 from flask_migrate import Migrate
 from config import settings
-from app.domain import domain_app
+from app.domain import domain
 
 
 """ create flask app """
@@ -19,7 +19,7 @@ migrate = Migrate(application, db)
 
 
 """ register bluprint """
-application.register_blueprint(domain_app.domain_app)
+application.register_blueprint(domain.domain_app)
 
 """ error page """
 @application.errorhandler(404)
