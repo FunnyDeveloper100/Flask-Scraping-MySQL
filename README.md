@@ -41,6 +41,7 @@ No login or security is required for this test, just single user as above.
 
 
 # set up project
+
 1. set up python 3.x virtualenv
   ```python3 -m venv venv```
 3. activate virtualenv
@@ -48,6 +49,9 @@ No login or security is required for this test, just single user as above.
 4. install packages in requirements.txt
   ```pip insatll -r requirements.txt``` or if installed pip3 ```pip3 install -r requirements.txt```
 5. migrate database
+  
+  before migratation, please drop tables on csv_mysql database if already tables created by python script.
+
   ```flask db init```
 
   ```flask db migrate```
