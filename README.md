@@ -50,7 +50,7 @@ No login or security is required for this test, just single user as above.
   ```pip insatll -r requirements.txt``` or if installed pip3 ```pip3 install -r requirements.txt```
 5. migrate database
   
-  before migratation, please drop tables on csv_mysql database if already tables created by python script.
+  before migration, please drop tables on csv_mysql database if already tables created by python script.
 
   ```flask db init```
 
