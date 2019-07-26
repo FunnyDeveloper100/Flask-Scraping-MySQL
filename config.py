@@ -54,7 +54,7 @@ class BaseConfig(object):
 
     SQLALCHEMY_DATABASE_URI = str_env(
         'SQLALCHEMY_DATABASE_URI',
-        'mysql://test:12345@localhost/csv_mysql'
+        'mysql://root:root@localhost/csv_mysql'
     )
 
 
