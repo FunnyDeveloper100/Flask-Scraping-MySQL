@@ -20,8 +20,8 @@ tmp_file_uncompressed = '/tmp/archive.txt'
 
 db_config = {
     'host': 'localhost',
-    'user': 'root',
-    'password': 'root',
+    'user': 'test',
+    'password': '12345',
     'database': 'csv_mysql'
 }
 db_structure = {
