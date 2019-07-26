@@ -46,13 +46,15 @@ No login or security is required for this test, just single user as above.
 3. activate virtualenv
   ```source venv/bin/activate```
 4. install packages in requirements.txt
-  ```pip insatll -r requirements.txt```
+  ```pip insatll -r requirements.txt``` or if installed pip3 ```pip3 install -r requirements.txt```
 5. migrate database
-  ```python manage.py db init```
-  ```python manage.py db migrate```
-  ```python manage.py db upgrade```
+  ```flask db init```
+
+  ```flask db migrate```
   
-  then, domains, search, results tables are migrated to mysql database
+  ```flask db upgrade```
+  
+    then, domains, search, results tables are migrated to mysql database
 
 6. upload the csv to MySQL
   ```python domains-csv.py --f domains.csv.gz```
