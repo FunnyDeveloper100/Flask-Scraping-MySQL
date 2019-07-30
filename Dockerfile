@@ -1,7 +1,5 @@
 
 FROM python:3
-
-
 MAINTAINER Felipe
 
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -16,5 +14,3 @@ RUN pip install pip -U
 RUN pip install -r requirements.txt
 
 ADD . /app/
-
-RUN chmod +x docker-entrypoint.sh

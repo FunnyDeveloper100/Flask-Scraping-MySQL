@@ -39,30 +39,46 @@ I would like you to do the following:
 
 No login or security is required for this test, just single user as above.
 
+# set up project using docker
 
-# set up project
+1. install docker and docker-compose
+- enabling docker repository
+    ```sudo apt-get update```
+	
+    ```sudo apt-get install apt-transport-https ca-certificates curl software-properties-common```
 
-1. set up python 3.x virtualenv
-  ```python3 -m venv venv```
-3. activate virtualenv
-  ```source venv/bin/activate```
-4. install packages in requirements.txt
-  ```pip insatll -r requirements.txt``` or if installed pip3 ```pip3 install -r requirements.txt```
-5. migrate database
-  
-  before migration, please drop tables on csv_mysql database if already tables created by python script.
+    ```curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -```
+	
+    ```sudo apt-key fingerprint 0EBFCD88```
+	
+    ```sudo add-apt-repository "deb [arch=amd64]   https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"```
+- install docker-ce
+    ``` sudo apt update```
+    ```sudo apt install docker-ce ```
+- install docker-compose
+    ```sudo curl -L  "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose```
 
-  ```flask db init```
+    ```sudo chmod +x /usr/local/bin/docker-compose```
 
-  ```flask db migrate```
-  
-  ```flask db upgrade```
-  
-    then, domains, search, results tables are migrated to mysql database
+    ```docker-compose --version```
+2.  install git on ubuntu
+	  ```sudo apt-get update```
+	
+	  ```sudo apt-get install git```
+3. clone the project from git repository
+	```git clone https://github.com/chironblue/FelipeC.git```
 
-6. upload the csv to MySQL
-  ```python domains-csv.py --f domains.csv.gz```
+4. cloning project from repository
+	  ```git clone https://github.com/chironblue/FelipeC.git ```
+	
+	  ```cd FelipeC```
+5. run docker image
+	  if mysql server is running on ubuntu already, please stop mysql server by run ```sudo service mysql stop```
+	
+	  ```docker-compose up```
+6. run entrypoint script
+	  ```docker exec flask_app sh docker-entrypoint.sh```
 
-7. run flask application
-  ```python run.py```
+7. link the url [localhost:8001](http://localhost:8001)
+
 

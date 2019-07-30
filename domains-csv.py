@@ -19,7 +19,7 @@ tmp_file = '/tmp/archive.gz'
 tmp_file_uncompressed = '/tmp/archive.txt'
 
 db_config = {
-    'host': 'localhost',
+    'host': 'mysql_db',
     'user': 'test',
     'password': '12345',
     'database': 'csv_mysql'
