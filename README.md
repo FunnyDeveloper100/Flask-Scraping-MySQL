@@ -65,20 +65,18 @@ No login or security is required for this test, just single user as above.
 	  ```sudo apt-get update```
 	
 	  ```sudo apt-get install git```
-3. clone the project from git repository
-	```git clone https://github.com/chironblue/FelipeC.git```
 
-4. cloning project from repository
-	  ```git clone https://github.com/chironblue/FelipeC.git ```
+3. cloning project from repository
+	  ```git clone git@github.com:FunnyDeveloper100/Flask-Scraping-MySQL.git ```
 	
 	  ```cd FelipeC```
-5. run docker image
+4. run docker image
 	  if mysql server is running on ubuntu already, please stop mysql server by run ```sudo service mysql stop```
 	
 	  ```docker-compose up```
-6. run entrypoint script
+5. run entrypoint script
 	  ```docker exec flask_app sh docker-entrypoint.sh```
 
-7. link the url [localhost:8001](http://localhost:8001)
+6. link the url [localhost:8001](http://localhost:8001)
 
 
