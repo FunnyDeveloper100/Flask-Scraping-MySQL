@@ -69,7 +69,7 @@ No login or security is required for this test, just single user as above.
 3. cloning project from repository
 	  ```git clone git@github.com:FunnyDeveloper100/Flask-Scraping-MySQL.git ```
 	
-	  ```cd FelipeC```
+	  ```cd working directory```
 4. run docker image
 	  if mysql server is running on ubuntu already, please stop mysql server by run ```sudo service mysql stop```
 	
