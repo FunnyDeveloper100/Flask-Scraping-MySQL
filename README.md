@@ -30,10 +30,7 @@ optional arguments:
 7. For the search field the user must be able to enter: %WORDSEARCH% which is the same as Like%...% in Mysql. (ie Wildcard search)
 8. These searches get saved in the new MySQL table.
 9. The user can also delete searches.
-10. This is a test of your abilities 
-11. Thats it.
 
-No login or security is required for this test, just single user as above.
 
 # set up project using docker
 
