@@ -21,10 +21,6 @@ optional arguments:
 ### Full download of domains https://ausdomainledger.net/au-domains-latest.csv.gz
 ### For testing use the smaller sample file in this repository
 
-Hi Felipe,
-
-I would like you to do the following:
-
 1. Use the domains-csv.py code to import the data into a MySQL database. (Please intergrate this into the test app)
 2. Create a basic front end CRUD application in Flask that can access and display the data. (You can use any flask extention you want, but must include a requirements.txt.)
 3. Use any opensource Bootstrap theme you like for the front end.
